@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'planet.dart';
 
@@ -8,21 +8,17 @@ part of 'planet.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-Planet _$PlanetFromJson(Map<String, dynamic> json) {
-  return _Planet.fromJson(json);
-}
 
 /// @nodoc
 class _$PlanetTearOff {
   const _$PlanetTearOff();
 
-// ignore: unused_element
   _Planet call(
-      {@required String id,
-      @required PlanetId planetId,
-      @required String name,
-      @required String image,
-      String description}) {
+      {required String id,
+      required PlanetId planetId,
+      required String name,
+      required String image,
+      String description = ''}) {
     return _Planet(
       id: id,
       planetId: planetId,
@@ -31,15 +27,9 @@ class _$PlanetTearOff {
       description: description,
     );
   }
-
-// ignore: unused_element
-  Planet fromJson(Map<String, Object> json) {
-    return Planet.fromJson(json);
-  }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Planet = _$PlanetTearOff();
 
 /// @nodoc
@@ -50,7 +40,6 @@ mixin _$Planet {
   String get image;
   String get description;
 
-  Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
   $PlanetCopyWith<Planet> get copyWith;
 }
@@ -77,11 +66,11 @@ class _$PlanetCopyWithImpl<$Res> implements $PlanetCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object planetId = freezed,
-    Object name = freezed,
-    Object image = freezed,
-    Object description = freezed,
+    Object? id = freezed,
+    Object? planetId = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -118,11 +107,11 @@ class __$PlanetCopyWithImpl<$Res> extends _$PlanetCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object planetId = freezed,
-    Object name = freezed,
-    Object image = freezed,
-    Object description = freezed,
+    Object? id = freezed,
+    Object? planetId = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+    Object? description = freezed,
   }) {
     return _then(_Planet(
       id: id == freezed ? _value.id : id as String,
@@ -135,23 +124,14 @@ class __$PlanetCopyWithImpl<$Res> extends _$PlanetCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
 class _$_Planet implements _Planet {
   const _$_Planet(
-      {@required this.id,
-      @required this.planetId,
-      @required this.name,
-      @required this.image,
-      this.description})
-      : assert(id != null),
-        assert(planetId != null),
-        assert(name != null),
-        assert(image != null);
-
-  factory _$_Planet.fromJson(Map<String, dynamic> json) =>
-      _$_$_PlanetFromJson(json);
+      {required this.id,
+      required this.planetId,
+      required this.name,
+      required this.image,
+      this.description = ''});
 
   @override
   final String id;
@@ -161,6 +141,7 @@ class _$_Planet implements _Planet {
   final String name;
   @override
   final String image;
+  @JsonKey(defaultValue: '')
   @override
   final String description;
 
@@ -200,22 +181,15 @@ class _$_Planet implements _Planet {
   @override
   _$PlanetCopyWith<_Planet> get copyWith =>
       __$PlanetCopyWithImpl<_Planet>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_PlanetToJson(this);
-  }
 }
 
 abstract class _Planet implements Planet {
   const factory _Planet(
-      {@required String id,
-      @required PlanetId planetId,
-      @required String name,
-      @required String image,
+      {required String id,
+      required PlanetId planetId,
+      required String name,
+      required String image,
       String description}) = _$_Planet;
-
-  factory _Planet.fromJson(Map<String, dynamic> json) = _$_Planet.fromJson;
 
   @override
   String get id;
