@@ -12,4 +12,6 @@ abstract class Planet with _$Planet {
     required String image,
     @Default('') String description,
   }) = _Planet;
+
+  const factory Planet.empty() = _PlanetEmpty;
 }

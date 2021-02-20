@@ -27,6 +27,10 @@ class _$PlanetTearOff {
       description: description,
     );
   }
+
+  _PlanetEmpty empty() {
+    return const _PlanetEmpty();
+  }
 }
 
 /// @nodoc
@@ -34,26 +38,38 @@ const $Planet = _$PlanetTearOff();
 
 /// @nodoc
 mixin _$Planet {
-  String get id;
-  PlanetId get planetId;
-  String get name;
-  String get image;
-  String get description;
-
-  @JsonKey(ignore: true)
-  $PlanetCopyWith<Planet> get copyWith;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)
+        $default, {
+    required TResult Function() empty,
+  });
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  });
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Planet value) $default, {
+    required TResult Function(_PlanetEmpty value) empty,
+  });
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Planet value)? $default, {
+    TResult Function(_PlanetEmpty value)? empty,
+    required TResult orElse(),
+  });
 }
 
 /// @nodoc
 abstract class $PlanetCopyWith<$Res> {
   factory $PlanetCopyWith(Planet value, $Res Function(Planet) then) =
       _$PlanetCopyWithImpl<$Res>;
-  $Res call(
-      {String id,
-      PlanetId planetId,
-      String name,
-      String image,
-      String description});
 }
 
 /// @nodoc
@@ -63,31 +79,12 @@ class _$PlanetCopyWithImpl<$Res> implements $PlanetCopyWith<$Res> {
   final Planet _value;
   // ignore: unused_field
   final $Res Function(Planet) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? planetId = freezed,
-    Object? name = freezed,
-    Object? image = freezed,
-    Object? description = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      planetId: planetId == freezed ? _value.planetId : planetId as PlanetId,
-      name: name == freezed ? _value.name : name as String,
-      image: image == freezed ? _value.image : image as String,
-      description:
-          description == freezed ? _value.description : description as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$PlanetCopyWith<$Res> implements $PlanetCopyWith<$Res> {
+abstract class _$PlanetCopyWith<$Res> {
   factory _$PlanetCopyWith(_Planet value, $Res Function(_Planet) then) =
       __$PlanetCopyWithImpl<$Res>;
-  @override
   $Res call(
       {String id,
       PlanetId planetId,
@@ -181,6 +178,54 @@ class _$_Planet implements _Planet {
   @override
   _$PlanetCopyWith<_Planet> get copyWith =>
       __$PlanetCopyWithImpl<_Planet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)
+        $default, {
+    required TResult Function() empty,
+  }) {
+    return $default(id, planetId, name, image, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(id, planetId, name, image, description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Planet value) $default, {
+    required TResult Function(_PlanetEmpty value) empty,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Planet value)? $default, {
+    TResult Function(_PlanetEmpty value)? empty,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class _Planet implements Planet {
@@ -191,17 +236,99 @@ abstract class _Planet implements Planet {
       required String image,
       String description}) = _$_Planet;
 
-  @override
   String get id;
-  @override
   PlanetId get planetId;
-  @override
   String get name;
-  @override
   String get image;
-  @override
   String get description;
-  @override
   @JsonKey(ignore: true)
   _$PlanetCopyWith<_Planet> get copyWith;
+}
+
+/// @nodoc
+abstract class _$PlanetEmptyCopyWith<$Res> {
+  factory _$PlanetEmptyCopyWith(
+          _PlanetEmpty value, $Res Function(_PlanetEmpty) then) =
+      __$PlanetEmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PlanetEmptyCopyWithImpl<$Res> extends _$PlanetCopyWithImpl<$Res>
+    implements _$PlanetEmptyCopyWith<$Res> {
+  __$PlanetEmptyCopyWithImpl(
+      _PlanetEmpty _value, $Res Function(_PlanetEmpty) _then)
+      : super(_value, (v) => _then(v as _PlanetEmpty));
+
+  @override
+  _PlanetEmpty get _value => super._value as _PlanetEmpty;
+}
+
+/// @nodoc
+class _$_PlanetEmpty implements _PlanetEmpty {
+  const _$_PlanetEmpty();
+
+  @override
+  String toString() {
+    return 'Planet.empty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _PlanetEmpty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)
+        $default, {
+    required TResult Function() empty,
+  }) {
+    return empty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, PlanetId planetId, String name, String image,
+            String description)?
+        $default, {
+    TResult Function()? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Planet value) $default, {
+    required TResult Function(_PlanetEmpty value) empty,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Planet value)? $default, {
+    TResult Function(_PlanetEmpty value)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlanetEmpty implements Planet {
+  const factory _PlanetEmpty() = _$_PlanetEmpty;
 }
