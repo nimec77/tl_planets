@@ -17,6 +17,10 @@ class _$PlanetFailureTearOff {
     return const _PlanetFailureNotFound();
   }
 
+  _PlanetFaulureBadLength badLength() {
+    return const _PlanetFaulureBadLength();
+  }
+
   _PlanetFailureUnknown unknown() {
     return const _PlanetFailureUnknown();
   }
@@ -30,22 +34,26 @@ mixin _$PlanetFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notFound,
+    required TResult Function() badLength,
     required TResult Function() unknown,
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notFound,
+    TResult Function()? badLength,
     TResult Function()? unknown,
     required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlanetFailureNotFound value) notFound,
+    required TResult Function(_PlanetFaulureBadLength value) badLength,
     required TResult Function(_PlanetFailureUnknown value) unknown,
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlanetFailureNotFound value)? notFound,
+    TResult Function(_PlanetFaulureBadLength value)? badLength,
     TResult Function(_PlanetFailureUnknown value)? unknown,
     required TResult orElse(),
   });
@@ -108,6 +116,7 @@ class _$_PlanetFailureNotFound implements _PlanetFailureNotFound {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notFound,
+    required TResult Function() badLength,
     required TResult Function() unknown,
   }) {
     return notFound();
@@ -117,6 +126,7 @@ class _$_PlanetFailureNotFound implements _PlanetFailureNotFound {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notFound,
+    TResult Function()? badLength,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -130,6 +140,7 @@ class _$_PlanetFailureNotFound implements _PlanetFailureNotFound {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlanetFailureNotFound value) notFound,
+    required TResult Function(_PlanetFaulureBadLength value) badLength,
     required TResult Function(_PlanetFailureUnknown value) unknown,
   }) {
     return notFound(this);
@@ -139,6 +150,7 @@ class _$_PlanetFailureNotFound implements _PlanetFailureNotFound {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlanetFailureNotFound value)? notFound,
+    TResult Function(_PlanetFaulureBadLength value)? badLength,
     TResult Function(_PlanetFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {
@@ -151,6 +163,95 @@ class _$_PlanetFailureNotFound implements _PlanetFailureNotFound {
 
 abstract class _PlanetFailureNotFound implements PlanetFailure {
   const factory _PlanetFailureNotFound() = _$_PlanetFailureNotFound;
+}
+
+/// @nodoc
+abstract class _$PlanetFaulureBadLengthCopyWith<$Res> {
+  factory _$PlanetFaulureBadLengthCopyWith(_PlanetFaulureBadLength value,
+          $Res Function(_PlanetFaulureBadLength) then) =
+      __$PlanetFaulureBadLengthCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PlanetFaulureBadLengthCopyWithImpl<$Res>
+    extends _$PlanetFailureCopyWithImpl<$Res>
+    implements _$PlanetFaulureBadLengthCopyWith<$Res> {
+  __$PlanetFaulureBadLengthCopyWithImpl(_PlanetFaulureBadLength _value,
+      $Res Function(_PlanetFaulureBadLength) _then)
+      : super(_value, (v) => _then(v as _PlanetFaulureBadLength));
+
+  @override
+  _PlanetFaulureBadLength get _value => super._value as _PlanetFaulureBadLength;
+}
+
+/// @nodoc
+class _$_PlanetFaulureBadLength implements _PlanetFaulureBadLength {
+  const _$_PlanetFaulureBadLength();
+
+  @override
+  String toString() {
+    return 'PlanetFailure.badLength()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _PlanetFaulureBadLength);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() badLength,
+    required TResult Function() unknown,
+  }) {
+    return badLength();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? badLength,
+    TResult Function()? unknown,
+    required TResult orElse(),
+  }) {
+    if (badLength != null) {
+      return badLength();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PlanetFailureNotFound value) notFound,
+    required TResult Function(_PlanetFaulureBadLength value) badLength,
+    required TResult Function(_PlanetFailureUnknown value) unknown,
+  }) {
+    return badLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PlanetFailureNotFound value)? notFound,
+    TResult Function(_PlanetFaulureBadLength value)? badLength,
+    TResult Function(_PlanetFailureUnknown value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (badLength != null) {
+      return badLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlanetFaulureBadLength implements PlanetFailure {
+  const factory _PlanetFaulureBadLength() = _$_PlanetFaulureBadLength;
 }
 
 /// @nodoc
@@ -193,6 +294,7 @@ class _$_PlanetFailureUnknown implements _PlanetFailureUnknown {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notFound,
+    required TResult Function() badLength,
     required TResult Function() unknown,
   }) {
     return unknown();
@@ -202,6 +304,7 @@ class _$_PlanetFailureUnknown implements _PlanetFailureUnknown {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notFound,
+    TResult Function()? badLength,
     TResult Function()? unknown,
     required TResult orElse(),
   }) {
@@ -215,6 +318,7 @@ class _$_PlanetFailureUnknown implements _PlanetFailureUnknown {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PlanetFailureNotFound value) notFound,
+    required TResult Function(_PlanetFaulureBadLength value) badLength,
     required TResult Function(_PlanetFailureUnknown value) unknown,
   }) {
     return unknown(this);
@@ -224,6 +328,7 @@ class _$_PlanetFailureUnknown implements _PlanetFailureUnknown {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PlanetFailureNotFound value)? notFound,
+    TResult Function(_PlanetFaulureBadLength value)? badLength,
     TResult Function(_PlanetFailureUnknown value)? unknown,
     required TResult orElse(),
   }) {

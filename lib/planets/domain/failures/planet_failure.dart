@@ -5,5 +5,6 @@ part 'planet_failure.freezed.dart';
 @freezed
 abstract class PlanetFailure with _$PlanetFailure {
   const factory PlanetFailure.notFound() = _PlanetFailureNotFound;
+  const factory PlanetFailure.wrongLength() = _PlanetFaulureBadLength;
   const factory PlanetFailure.unknown() = _PlanetFailureUnknown;
 }

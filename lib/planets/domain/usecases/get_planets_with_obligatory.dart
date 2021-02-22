@@ -31,19 +31,21 @@ class GetPlanetsWithObligatory {
     if (eitherPlanets.isLeft()) {
       return eitherPlanets;
     }
-    final eitherPlanet = await planetRepository.getPlanetByPlanetId(obligatoryPlanetId);
-    if (eitherPlanet.isLeft()) {
-      return eitherPlanet.map((_) => []);
-    }
     final planets = eitherPlanets | [];
-    final randoms = List.generate(planets.length, (index) => index)
-      ..shuffle()
-      ..sublist(0, kPlanetsListSize);
-    final randomPlanets = randoms.map((index) => planets[index]).toList();
-    final obligatoryPlanet = eitherPlanet | const Planet.empty();
-    if (!randomPlanets.contains(obligatoryPlanet)) {
-      randomPlanets[_random.nextInt(kPlanetsListSize)] = obligatoryPlanet;
+    if (planets.length < kPlanetsListSize) {
+      return const Left(PlanetFailure.wrongLength());
     }
-    return Right(randomPlanets);
+    final eitherPlanet = await planetRepository.getPlanetByPlanetId(obligatoryPlanetId);
+    return eitherPlanet.map((planet) {
+      final randoms = List.generate(planets.length, (index) => index)
+        ..shuffle()
+        ..sublist(0, kPlanetsListSize);
+      final randomPlanets = randoms.map((index) => planets[index]).toList();
+      final obligatoryPlanet = eitherPlanet | const Planet.empty();
+      if (!randomPlanets.contains(obligatoryPlanet)) {
+        randomPlanets[_random.nextInt(kPlanetsListSize)] = obligatoryPlanet;
+      }
+      return randomPlanets;
+    });
   }
 }
