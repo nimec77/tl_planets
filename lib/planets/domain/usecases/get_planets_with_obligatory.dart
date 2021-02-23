@@ -28,24 +28,25 @@ class GetPlanetsWithObligatory {
 
   Future<Either<PlanetFailure, List<Planet>>> call(PlanetId obligatoryPlanetId) async {
     final eitherPlanets = await planetRepository.getPlanets();
-    if (eitherPlanets.isLeft()) {
-      return eitherPlanets;
-    }
-    final planets = eitherPlanets | [];
-    if (planets.length < kPlanetsListSize) {
-      return const Left(PlanetFailure.wrongLength());
-    }
-    final eitherPlanet = await planetRepository.getPlanetByPlanetId(obligatoryPlanetId);
-    return eitherPlanet.map((planet) {
-      final randoms = List.generate(planets.length, (index) => index)
-        ..shuffle()
-        ..sublist(0, kPlanetsListSize);
-      final randomPlanets = randoms.map((index) => planets[index]).toList();
-      final obligatoryPlanet = eitherPlanet | const Planet.empty();
-      if (!randomPlanets.contains(obligatoryPlanet)) {
-        randomPlanets[_random.nextInt(kPlanetsListSize)] = obligatoryPlanet;
-      }
-      return randomPlanets;
-    });
+    return eitherPlanets.fold(
+      (fail) => Left(fail),
+      (planets) async {
+        if (planets.length < kPlanetsListSize) {
+          return const Left(PlanetFailure.wrongLength());
+        }
+        final eitherPlanet = await planetRepository.getPlanetByPlanetId(obligatoryPlanetId);
+        return eitherPlanet.map((planet) {
+          final randoms = List.generate(planets.length, (index) => index)
+            ..shuffle()
+            ..sublist(0, kPlanetsListSize);
+          final randomPlanets = randoms.map((index) => planets[index]).toList();
+          final obligatoryPlanet = eitherPlanet | const Planet.empty();
+          if (!randomPlanets.contains(obligatoryPlanet)) {
+            randomPlanets[_random.nextInt(kPlanetsListSize)] = obligatoryPlanet;
+          }
+          return randomPlanets;
+        });
+      },
+    );
   }
 }
