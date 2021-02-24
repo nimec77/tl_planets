@@ -40,9 +40,8 @@ class GetPlanetsWithObligatory {
             ..shuffle()
             ..sublist(0, kPlanetsListSize);
           final randomPlanets = randoms.map((index) => planets[index]).toList();
-          final obligatoryPlanet = eitherPlanet | const Planet.empty();
-          if (!randomPlanets.contains(obligatoryPlanet)) {
-            randomPlanets[_random.nextInt(kPlanetsListSize)] = obligatoryPlanet;
+          if (!randomPlanets.contains(planet)) {
+            randomPlanets[_random.nextInt(kPlanetsListSize)] = planet;
           }
           return randomPlanets;
         });
