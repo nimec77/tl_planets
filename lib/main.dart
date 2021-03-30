@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(PlantesApp());
+  runApp(PlanetsApp());
 }
 
-class PlantesApp extends StatelessWidget {
+class PlanetsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
